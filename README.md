@@ -2,6 +2,7 @@
 
 This project demonstrates **Playwright data-driven testing** using **Excel as a test data source**.  
 It follows the **Page Object Model (POM)** design pattern and shows how to **parameterize Playwright tests** dynamically.
+Read the full tutorial here: [Playwright Parameterized Tests in JavaScript](https://software-testing-tutorials-automation.com/playwright-parameterized-tests-javascript.html)
 
 ---
 

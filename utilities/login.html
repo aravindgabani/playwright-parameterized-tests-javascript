@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .login-container {
+      max-width: 300px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .credentials-info {
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px dashed #aaa;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .credentials-info h3 {
+      margin-top: 0;
+      font-size: 16px;
+      color: #333;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+    }
+    footer a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" /><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" /><br><br>
+
+    <button>Login</button>
+    <p id="message"></p>
+    
+    <div class="credentials-info">
+      <h3>Valid User Credentials</h3>
+      <ul>
+        <li>Username: <b>admin</b>, Password: <b>admin123</b></li>
+        <li>Username: <b>user1</b>, Password: <b>user123</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Downloaded from 
+      <a href="https://software-testing-tutorials-automation.com/2025/09/playwright-parameterized-tests-javascript.html" target="_blank">
+        Software Testing Tutorials - Playwright Parameterized Tests
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    function login() {
+      const uid = document.getElementById("username").value;
+      const pwd = document.getElementById("password").value;
+
+      const validUsers = [
+        { username: "admin", password: "admin123" },
+        { username: "user1", password: "user123" }
+      ];
+
+      const isValid = validUsers.some(user => user.username === uid && user.password === pwd);
+
+      const message = document.getElementById("message");
+      if (isValid) {
+        message.innerText = "Welcome to Dashboard";
+        message.style.color = "green";
+      } else {
+        message.innerText = "Invalid credentials";
+        message.style.color = "red";
+      }
+    }
+
+    // Attach login function to button
+    document.querySelector("button").addEventListener("click", login);
+  </script>
+</body>
+</html>

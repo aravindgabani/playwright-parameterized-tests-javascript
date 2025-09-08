@@ -26,30 +26,11 @@ async function readLoginData(filePath, sheetName) {
 }
 
 async function writeTestResult(worksheet, rowNumber, result) {
-  const resultColumn = 4; // Column D → Result
+  const resultColumn = 4; // Column D → Pass/Fail
   const row = worksheet.getRow(rowNumber);
 
-  // Write result
+  // Write PASS/FAIL
   row.getCell(resultColumn).value = result;
-
-  // Determine color for this row
-  let color;
-  if (result.toUpperCase() === 'PASS') {
-    color = 'FF00FF00'; // Green
-  } else if (result.toUpperCase() === 'FAIL') {
-    color = 'FFFF0000'; // Red
-  } else {
-    color = 'FFFFFFFF'; // Default white
-  }
-
-  // Apply color only to this row's cells
-  row.eachCell({ includeEmpty: true }, (cell) => {
-    cell.fill = {
-      type: 'pattern',
-      pattern: 'solid',
-      fgColor: { argb: color },
-    };
-  });
 
   row.commit();
 }
